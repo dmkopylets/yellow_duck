@@ -1,0 +1,33 @@
+services:
+  web:
+    container_name: yduck_web
+    ports:
+      - "80:80"
+    build:
+      context: ./docker
+    depends_on:
+      - db
+    volumes:
+      - ./api:/var/www/localhost/htdocs/api/
+      - ./api-docs:/var/www/localhost/htdocs/api-docs/
+      - ./docker/logs:/var/www/logs/
+      - ./docker/apache2/sites-enabled:/etc/apache2/sites-enabled/
+    environment:
+      PHP_EXTENSION_XDEBUG: 0
+      PHP_INI_DIR: /usr/local/etc/php
+      TZ: "Europe/Zaporozhye"
+      APACHE_LOG_DIR: /var/www/logs
+  db:
+    container_name: yduck_db
+    image: mariadb:latest
+    hostname: "${DB_HOST}"
+    environment:
+      MARIADB_USER: $DB_USERNAME
+      MARIADB_PASSWORD: $DB_PASSWORD
+      DB_DATABASE: $DB_DATABASE
+      DB_PORT: $DB_PORT
+      MARIADB_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+    ports:
+      - "3306:${DB_PORT}"
+    volumes:
+      - ./docker/db/data:/var/lib/mysql:rw
