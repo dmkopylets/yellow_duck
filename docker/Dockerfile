@@ -7,7 +7,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENV APACHE_LOG_DIR=/var/www/logs
 ENV APPLICATION_USER=apache APPLICATION_GROUP=apache
 ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
-
 ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 COPY ./conf/ /opt/docker/
@@ -35,7 +34,7 @@ RUN chown -R $APPLICATION_USER:$APPLICATION_GROUP /var/www/logs/
 
 WORKDIR /var/www/localhost/htdocs/
 
-EXPOSE 9000
+EXPOSE 9000 443
 ENTRYPOINT ["/entrypoint"]
 CMD ["supervisord"]
 

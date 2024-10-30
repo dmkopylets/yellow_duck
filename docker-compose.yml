@@ -3,6 +3,7 @@ services:
     container_name: yduck_web
     ports:
       - "80:80"
+      - "443:443"
     build:
       context: ./docker
     depends_on:
@@ -12,6 +13,7 @@ services:
       - ./api-docs:/var/www/localhost/htdocs/api-docs/
       - ./docker/logs:/var/www/logs/
       - ./docker/apache2/sites-enabled:/etc/apache2/sites-enabled/
+      - ./docker/apache2/ssl:/etc/apache2/ssl/
     environment:
       PHP_EXTENSION_XDEBUG: 0
       PHP_INI_DIR: /usr/local/etc/php
