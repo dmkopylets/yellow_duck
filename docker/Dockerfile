@@ -10,6 +10,7 @@ ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 ADD ./apache2/httpd.conf /etc/apache2/
+
 COPY ./conf/ /opt/docker/
 
 # Composer configuration
@@ -37,6 +38,7 @@ WORKDIR /var/www/localhost/htdocs/
 EXPOSE 9000 443
 ENTRYPOINT ["/entrypoint"]
 CMD ["supervisord"]
+
 
 ENV WEB_ALIAS_DOMAIN=*.local
 ENV WEB_NO_CACHE_PATTERN=\.(css|js|gif|png|jpg|svg|json|xml)$
