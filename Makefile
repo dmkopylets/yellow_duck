@@ -38,4 +38,4 @@ migrate:
 	$(EXEC_PHP) sh -c "cd api; php artisan migrate"
 
 swagger-generate:
-	$(EXEC_PHP) sh -c "cd api; vendor/bin/openapi /var/www/localhost/htdocs/api/app/Http/Controller -o /var/www/localhost/htdocs/api-docs/swagger.json"
+	$(EXEC_PHP) sh -c "cd api; vendor/bin/openapi /var/www/localhost/htdocs/api/app/Http/Controllers -o /var/www/localhost/htdocs/api-docs/swagger.json"

@@ -9,6 +9,8 @@ ENV APPLICATION_USER=apache APPLICATION_GROUP=apache
 ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
+ADD ./apache2/httpd.conf /etc/apache2/
+
 COPY ./conf/ /opt/docker/
 
 # Composer configuration
@@ -26,7 +28,6 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
 
 # Clear and configure logs
 RUN rm -rf /var/www/logs && mkdir /var/www/logs
-#RUN ln -sf /dev/stdout /var/www/logs/access.log && ln -sf /dev/stderr /var/www/logs/error.log
 
 # Set user and group ownership
 RUN chown -R $APPLICATION_USER:$APPLICATION_GROUP /var/www/localhost/htdocs/

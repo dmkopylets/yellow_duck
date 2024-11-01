@@ -1,5 +1,4 @@
 # Default ignored files
-/shelf/
-/default.crt
-/default.csr
-/default.key
+/*.crt
+/*.csr
+/*.key
