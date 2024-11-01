@@ -10,7 +10,6 @@ ENV APACHE_RUN_USER=apache APACHE_RUN_GROUP=apache
 ADD ./conf/usr/local/etc/php/php.ini /usr/local/etc/php/
 ADD ./apache2/conf.d/vhosts.conf /etc/apache2/conf.d/
 ADD ./apache2/httpd.conf /etc/apache2/
-
 COPY ./conf/ /opt/docker/
 
 # Composer configuration
