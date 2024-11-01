@@ -39,7 +39,6 @@ EXPOSE 9000 443
 ENTRYPOINT ["/entrypoint"]
 CMD ["supervisord"]
 
-
 ENV WEB_ALIAS_DOMAIN=*.local
 ENV WEB_NO_CACHE_PATTERN=\.(css|js|gif|png|jpg|svg|json|xml)$
 ENV WEB_PHP_SOCKET=127.0.0.1:9000
